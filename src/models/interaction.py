@@ -47,7 +47,7 @@ class SearchInteraction(Interaction):
 
         :return List[dict]: Список вакансий или работодателей
         """
-        if self.search_type == "employer": 
+        if self.search_type == "employer":
             query = input("Введите поисковый запрос (По умолчанию любые): ")
             area = input("Выберите регион (По умолчанию всe): ")
             city_id = find_city(AreaFileWorker().load_data(), area)
@@ -219,12 +219,12 @@ class DataBaseInteraction(Interaction):
                     # Проверяем, что все элементы являются экземплярами Vacancy
                     # прежде чем вызывать _load_vacancies_to_db
                     if all(isinstance(item, Vacancy) for item in self.storage):
-                        self._load_vacancies_to_db(self.storage) 
+                        self._load_vacancies_to_db(self.storage)
 
                     # Проверяем, что все элементы являются экземплярами Employer
                     # прежде чем вызывать _load_employers_to_db
                     if all(isinstance(item, Employer) for item in self.storage):
-                        self._load_employers_to_db(self.storage)  
+                        self._load_employers_to_db(self.storage)
                     else:
                         print("\nОшибка: список содержит объекты несоответствующего типа.")
                 else:

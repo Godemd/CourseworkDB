@@ -5,8 +5,16 @@ import unittest
 from unittest.mock import MagicMock, mock_open, patch
 
 from config import AREAS_DIR, EMPLOYERS_DIR, LOGS_DIR
-from src.utils import (AreaFileWorker, CustomFormatter, EmployerFileWorker, filter_jobs_by_salary_range, find_city,
-                       format_date, get_integer_input, setup_logger)
+from src.utils import (
+    AreaFileWorker,
+    CustomFormatter,
+    EmployerFileWorker,
+    filter_jobs_by_salary_range,
+    find_city,
+    format_date,
+    get_integer_input,
+    setup_logger,
+)
 
 
 class TestCustomFormatter(unittest.TestCase):

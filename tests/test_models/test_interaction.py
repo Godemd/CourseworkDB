@@ -3,8 +3,13 @@ from unittest.mock import MagicMock, patch
 
 from src.api.hh_api import HHAPI
 from src.models.hh_models import Employer, Vacancy
-from src.models.interaction import (DataBaseInteraction, EmployeeInteraction, Interaction, SearchInteraction,
-                                    VacancyInteraction)
+from src.models.interaction import (
+    DataBaseInteraction,
+    EmployeeInteraction,
+    Interaction,
+    SearchInteraction,
+    VacancyInteraction,
+)
 from src.utils import AreaFileWorker
 
 
