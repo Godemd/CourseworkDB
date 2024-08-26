@@ -47,37 +47,7 @@ class SearchInteraction(Interaction):
 
         :return List[dict]: Список вакансий или работодателей
         """
-        # TODO : добавить поиск вакансий и взаимодействие с базой данных
-        # if self.search_type == "vacancy":
-        #     area = input("\nВыберите регион (По умолчанию Все): ")
-        #     logger.info(f"Выбран регион поиска: {area if area else 'Все'}")
-        #     city_id = find_city(AreaFileWorker().load_data(), area)
-
-        #     query = input("Введите поисковый запрос: ")
-        #     logger.info(f"Поиск по ключевому слову: {query}")
-
-        #     salary_range = (
-        #         input(
-        # "Введите диапазон зарплаты. Формат: мин - макс (через пробел) или макс (необязательно): ") or None
-        #     )
-
-        #     print("\nИщем вакансии...")
-
-        #     jobs_data = self.api.load_vacancies(query=query, area=city_id, per_page=20)
-
-        #     if salary_range:
-        #         filter_jobs = filter_jobs_by_salary_range(jobs_data, salary_range)
-        #         if filter_jobs is None:
-        #             logger.info("Вакансий не найдено.")
-        #             print("\nВакансий не найдено.")
-        #             return []
-        #         logger.info(f"Найдено {len(filter_jobs)} вакансий.")
-        #         return filter_jobs
-
-        #     logger.info(f"Найдено {len(jobs_data)} вакансий.")
-
-        #     return jobs_data
-        if self.search_type == "employer":  # elif self.search_type == "employer":
+        if self.search_type == "employer": 
             query = input("Введите поисковый запрос (По умолчанию любые): ")
             area = input("Выберите регион (По умолчанию всe): ")
             city_id = find_city(AreaFileWorker().load_data(), area)
@@ -136,13 +106,6 @@ class VacancyInteraction(Interaction):
 
             elif choice == "2":
                 print("\nНедоступно, в разработке.")
-                # self.storage = self.search_vacancies.interact()
-                # vacances = Vacancy.create_instances_from_hh_api_data(self.storage)
-
-                # if input(f"\nВывести {len(vacances)} вакансии? (Да/Нет) ").lower() == "да":
-                #     for vac in self._sorted_jobs(vacances):
-                #         print(vac)
-                # return vacances
                 return []
 
             elif choice == "3":
@@ -256,12 +219,12 @@ class DataBaseInteraction(Interaction):
                     # Проверяем, что все элементы являются экземплярами Vacancy
                     # прежде чем вызывать _load_vacancies_to_db
                     if all(isinstance(item, Vacancy) for item in self.storage):
-                        self._load_vacancies_to_db(self.storage)  # self.storage теперь точно List[Vacancy]
+                        self._load_vacancies_to_db(self.storage) 
 
                     # Проверяем, что все элементы являются экземплярами Employer
                     # прежде чем вызывать _load_employers_to_db
                     if all(isinstance(item, Employer) for item in self.storage):
-                        self._load_employers_to_db(self.storage)  # self.storage теперь точно List[Employer]
+                        self._load_employers_to_db(self.storage)  
                     else:
                         print("\nОшибка: список содержит объекты несоответствующего типа.")
                 else:
